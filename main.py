@@ -13,7 +13,7 @@ import logging
 import socket
 from logging.handlers import SysLogHandler
 
-TIME_IN_SECONDS = 20
+TIME_IN_SECONDS = 200
 BOT_TOKEN = "BotToken"
 # bot_token = "deployBotToken"
 
