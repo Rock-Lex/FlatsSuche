@@ -124,7 +124,14 @@ class PARSER:
 
         self.logger.info("#")
         self.logger.info("Diff:")
-        # self.log_list(diff_items)
+
+        for item in diff_items:
+            string = "      " + item.price + ", " + item.address
+            self.logger.info(string)
+            self.logger.info(item.url)
+            self.logger.info("foto: " + item.img)
+            self.logger.info("-")
+        
         return diff_items
 
     def proxy_request(self, request_type, url, **kwargs):
@@ -198,6 +205,9 @@ class PARSER:
         for item in templist:
             string = "      " + item.price + ", " + item.address
             self.logger.info(string)
+            self.logger.info(item.url)
+            self.logger.info("foto: " + item.img)
+            self.logger.info("-")
 
         if templist:
             if swap == "0":
@@ -302,6 +312,17 @@ class PARSER:
                 print("Error")
                 pass
 
+
+        self.logger.info("#")
+        self.logger.info("#")
+        self.logger.info("  Parsed list:")
+        for item in templist:
+            string = "      " + item.price + ", " + item.address
+            self.logger.info(string)
+            self.logger.info(item.url)
+            self.logger.info("foto: " + item.img)
+            self.logger.info("-")
+
         self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]
         self.context.wg.wg_lists[location] = templist
 
@@ -317,7 +338,7 @@ class PARSER:
         url += str(priceDo)
         url += self.getData('wg', 'swap')[swap]
 
-        print(url)
+        self.logger.info(url)
         return url
 
     def __wg_parse(self, location, priceDo, swap):

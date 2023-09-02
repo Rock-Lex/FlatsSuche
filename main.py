@@ -13,9 +13,9 @@ import logging
 import socket
 from logging.handlers import SysLogHandler
 
-TIME_IN_SECONDS = 200
-# BOT_TOKEN = "BotToken"
-BOT_TOKEN = "deployBotToken"
+TIME_IN_SECONDS = 20
+BOT_TOKEN = "BotToken"
+# BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
