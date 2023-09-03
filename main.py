@@ -36,7 +36,7 @@ def notification_users(databaseManager, parser, url, logger):
     logger.info(f"Thread time: {TIME_IN_SECONDS}")
     while True:
         sleep(TIME_IN_SECONDS)
-        print(f"{TIME_IN_SECONDS} seconds passed... running parser")
+        logger.info(f"{TIME_IN_SECONDS} seconds passed... running parser")
         AllChats = databaseManager.get_many({'send_notification': True})
         allCities = []
         allSwaps = []
