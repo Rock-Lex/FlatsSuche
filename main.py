@@ -15,7 +15,7 @@ import socket
 from logging.handlers import SysLogHandler
 
 SITE = "ebay"
-TIME_IN_SECONDS = 20
+TIME_IN_SECONDS = 600
 BOT_TOKEN = "BotToken"
 # BOT_TOKEN = "deployBotToken"
 
@@ -28,12 +28,12 @@ class ContextFilter(logging.Filter):
         return True
 
 
-def notification_users(databaseManager, parser, url):
+def notification_users(databaseManager, parser, url, logger):
     """
         THREAD WHERE ALL NOTIFICATIONS FOR USERS WILL BE HAPPENED
     """
-    print("Thread running...")
-    print(f"Thread time: {TIME_IN_SECONDS}")
+    logger.info("Thread is running...")
+    logger.info(f"Thread time: {TIME_IN_SECONDS}")
     while True:
         sleep(TIME_IN_SECONDS)
         print(f"{TIME_IN_SECONDS} seconds passed... running parser")
@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
 
 
-    notificThread = Thread(target=notification_users, args=(databaseManager, parser, url, ))
+    notificThread = Thread(target=notification_users, args=(databaseManager, parser, url, logger))
     notificThread.start()
     botUpdater = bot.BOT(token, databaseManager, helpers)
 
