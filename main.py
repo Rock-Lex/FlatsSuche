@@ -113,7 +113,7 @@ if __name__ == '__main__':
     logger.info("-")
     logger.info("##################################")
     logger.info("#         Bot is started         #")
-    logger.info(f"#    one the {BOT_TOKEN}         #")
+    logger.info(f"#    on  the {BOT_TOKEN}          #")
     logger.info("##################################")
 
     with open("config_bot.json") as file:

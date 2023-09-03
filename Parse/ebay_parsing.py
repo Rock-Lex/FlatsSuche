@@ -95,21 +95,16 @@ class EBAY_PARSING:
                 price = item.find("p", {"class": "aditem-main--middle--price-shipping--price"}).text.strip()
                 address = item.find("div", {"class": "aditem-main--top--left"}).text.strip()
                 description = item.find("a", {"class": "ellipsis"}).text.strip()
-                img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")[
-                    "srcset"]  # ["data-imgsrcretina"].split()[0]
+
+                if item.find("div", {"class": "is-nopic"}):
+                    img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
+                else:
+                    img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")["srcset"]  # ["data-imgsrcretina"].split()[0]
 
                 item_data = ITEM(url=item_url, price=price.split()[0], address=address, description=description,
                                  img=img)
 
                 items_list.append(item_data)
-
-                ######################################
-                self.f_logger.log("////////////////")
-                self.f_logger.log(f"ITEM PARSING::{item_data.price}, {item_data.url}")
-                self.f_logger.log(f"ITEM IMG::{item_data.img}")
-                self.f_logger.log(f"{item}")
-                self.f_logger.log("////////////////")
-                ######################################
 
             except Exception:
                 pass
