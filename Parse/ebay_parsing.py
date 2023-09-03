@@ -102,6 +102,15 @@ class EBAY_PARSING:
                                  img=img)
 
                 items_list.append(item_data)
+
+                ######################################
+                self.f_logger.log("////////////////")
+                self.f_logger.log(f"ITEM PARSING::{item_data.price}, {item_data.url}")
+                self.f_logger.log(f"ITEM IMG::{item_data.img}")
+                self.f_logger.log(f"{item}")
+                self.f_logger.log("////////////////")
+                ######################################
+
             except Exception:
                 pass
 
