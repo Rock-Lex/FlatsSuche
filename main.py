@@ -4,7 +4,8 @@ import bot
 from dbmanager import PyMongoDBManager
 
 from time import sleep
-import parse
+# import parse
+from Parse.parsing import PARSER
 import requests
 import json
 from helpers import HELPERS
@@ -13,6 +14,7 @@ import logging
 import socket
 from logging.handlers import SysLogHandler
 
+SITE = "ebay"
 TIME_IN_SECONDS = 20
 BOT_TOKEN = "BotToken"
 # BOT_TOKEN = "deployBotToken"
@@ -56,12 +58,8 @@ def notification_users(databaseManager, parser, url):
             for swap in allSwaps:
                 if databaseManager.is_in_db({'location': city, 'swap': swap}) is None:
                     continue
-                parser.make(location=city, swap=swap)
-                print("\n::::::ITEMS::::::")
-                parsed_items = parser.get_list("all", city, swap)
-                print("parsed_items")
-                print(parsed_items)
-                print(":::::::::::::::::\n")
+                parser.make(site=SITE, location=city, swap=swap)
+                parsed_items = parser.get_list(SITE, city, swap)
 
                 users = databaseManager.get_many({'city': city, 'swap': swap})
                 for value in users:
@@ -115,6 +113,7 @@ if __name__ == '__main__':
     logger.info("-")
     logger.info("##################################")
     logger.info("#         Bot is started         #")
+    logger.info(f"#    one the {BOT_TOKEN}         #")
     logger.info("##################################")
 
     with open("config_bot.json") as file:
@@ -140,7 +139,7 @@ if __name__ == '__main__':
                                        target_collection_name=botData['TARGET_COLLECTION_NAME'])
 
     """parser"""
-    parser = parse.PARSER(parseData, logger)
+    parser = PARSER(parseData, logger)
     helpers = HELPERS(phrases)
 
 

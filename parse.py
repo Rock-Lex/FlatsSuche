@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import parse_context
+from Parse import parse_context
 import random
 
 DEBUG = False
@@ -131,7 +131,7 @@ class PARSER:
             self.logger.info(item.url)
             self.logger.info("foto: " + item.img)
             self.logger.info("-")
-        
+
         return diff_items
 
     def proxy_request(self, request_type, url, **kwargs):
