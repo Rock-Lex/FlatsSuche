@@ -73,5 +73,7 @@ class WGGESUCHT_PARSING:
 
         self.f_logger.log_list(log_list=items_list, text="WgGesucht::Parsed list: ")
 
-        self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]
-        self.context.wg.wg_lists[location] = items_list
+        if items_list:
+            self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]
+        else:
+            self.context.wg.wg_lists[location] = items_list

@@ -82,9 +82,11 @@ class EBAY_PARSING:
     def get_items_in_list(self, page, location, swap):
         parsed_list = []
         items_list = []
-        soup = BeautifulSoup(page.text, 'lxml')
+        # soup = BeautifulSoup(page.text, 'lxml')
+        soup = BeautifulSoup(page.text, 'html.parser')
 
         for item in soup.select('li.ad-listitem:not(.badge-topad)'):
+        # for item in soup.findAll('li', {'class': 'ad-listitem'}, class_=lambda x: x != 'badge-topad'):
             parsed_list.append(item)
 
         for item in parsed_list[:5]:
@@ -97,16 +99,29 @@ class EBAY_PARSING:
                 description = item.find("a", {"class": "ellipsis"}).text.strip()
 
                 # if item.find("div", {"class": "is-nopic"}):
+
+                # try:
+                #     sample = item.find("div")["is-nopic"]
+                #     img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
+                # except Exception:
+                #     img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")["srcset"]  # ["data-imgsrcretina"].split()[0]
+
+
                 try:
-                    sample = item.find("div")["is-nopic"]
-                    img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
+                    image = soup.find('div', class_='imagebox srpimagebox')
+                    if 'is-nopic' in image.get('class'):
+                        img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
+                    else:
+                        img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")["srcset"]
                 except Exception:
-                    img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")["srcset"]  # ["data-imgsrcretina"].split()[0]
+                    img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
+                    self.f_logger.log("Ebay::Error: Exception during the IMAGE Parsing")
 
                 item_data = ITEM(url=item_url, price=price.split()[0], address=address, description=description,
                                  img=img)
 
                 items_list.append(item_data)
+
 
             except Exception:
                 self.f_logger.log("Ebay::Error: Exception during the ITEM Parsing")
