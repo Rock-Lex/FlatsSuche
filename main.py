@@ -68,8 +68,8 @@ def notification_users(databaseManager, parser, url, logger):
                             if value["min_price"] < int(item.price) < value["max_price"]:
                                 # self.updater.bot.sendMessage(value.chat_id, f'Url: {item.url} \n Price = {item.price}')
                                 message = f"{item.description}\n" \
-                                          f"*{item.price} €*\n" \
-                                          f"Address is *{item.address}*\n" \
+                                          f"Price:   *{item.price} €*\n" \
+                                          f"Address: *{item.address}*\n" \
                                           f"[⁠]({item.img})"
                                           # f"<a href=\"{item.url}\">URL</a>\n" \
                                 url_for_request = url

@@ -51,21 +51,22 @@ class WGGESUCHT_PARSING:
 
         for item in parsed_list[:5]:
             try:
-                item_url = self.get_data('wg', 'base_url')
-                item_url += item.find("a", href=True)["href"]
+                item_url = self.get_data('wg', 'base_url') + item.find("a", href=True)["href"]
                 price = item.find("div", {"class": "col-xs-3"}).find("b").text.strip()
-                address = item.find("div", {"class": "col-xs-11"}).find("span").text
 
+                address = item.find("div", {"class": "col-xs-11"}).find("span").text
                 index1 = address.find("|") + 1
                 address = address[index1:]
                 index2 = address.find("|") + 1
                 street = address[index2:].strip()
-                bezirk = address.split("|")[0].strip()
+                bezirk = str(address.split("|")[0]).strip()
+                bezirk = ' '.join(bezirk.split())
+                address = street + ", " + bezirk
 
                 description = item.find("a", {"class": "detailansicht"}).find("b").text
                 img = item.find("a")["style"][22:-2]
 
-                item_data = ITEM(item_url, price.split()[0], address=street, description=description, img=img)
+                item_data = ITEM(item_url, price.split()[0], address=address, description=description, img=img)
                 items_list.append(item_data)
             except Exception:
                 self.f_logger.log("WgGesucht::Error: Exception during the ITEM Parsing")
@@ -75,5 +76,6 @@ class WGGESUCHT_PARSING:
 
         if items_list:
             self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]
+            self.context.wg.wg_lists[location] = items_list
         else:
             self.context.wg.wg_lists[location] = items_list

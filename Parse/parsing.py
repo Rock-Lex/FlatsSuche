@@ -1,7 +1,3 @@
-# Build in
-import random
-import requests
-# PIP
 # Scripts
 from Parse.parse_context import PARSE_CONTEXT
 from Parse.log_parsing import LOG_PARSING
@@ -98,6 +94,7 @@ if DEBUG:
         print("img:" + item.img)
         print("url:" + item.url)
         print("price:" + item.price)
+        print("address:" + item.address)
 
     # print("-------------------------")
     # request.make(site=site, location=location, priceDo=2000, swap=swap)  # Wg gesucht - 10k geht nicht
