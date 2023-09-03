@@ -15,7 +15,7 @@ import socket
 from logging.handlers import SysLogHandler
 
 SITE = "ebay"
-TIME_IN_SECONDS = 600
+TIME_IN_SECONDS = 50
 BOT_TOKEN = "BotToken"
 # BOT_TOKEN = "deployBotToken"
 
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     logger.info("-")
     logger.info("##################################")
     logger.info("#         Bot is started         #")
-    logger.info(f"#    on  the {BOT_TOKEN}          #")
+    logger.info(f"#      on  the {BOT_TOKEN}          #")
     logger.info("##################################")
 
     with open("config_bot.json") as file:

@@ -96,9 +96,11 @@ class EBAY_PARSING:
                 address = item.find("div", {"class": "aditem-main--top--left"}).text.strip()
                 description = item.find("a", {"class": "ellipsis"}).text.strip()
 
-                if item.find("div", {"class": "is-nopic"}):
+                # if item.find("div", {"class": "is-nopic"}):
+                try:
+                    sample = item.find("div")["is-nopic"]
                     img = "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-10615.jpg?w=2000"
-                else:
+                except Exception:
                     img = item.find("div", {"class": "imagebox srpimagebox"}).find("img")["srcset"]  # ["data-imgsrcretina"].split()[0]
 
                 item_data = ITEM(url=item_url, price=price.split()[0], address=address, description=description,
@@ -107,7 +109,7 @@ class EBAY_PARSING:
                 items_list.append(item_data)
 
             except Exception:
-                pass
+                self.f_logger.log("Ebay::Error: Exception during the ITEM Parsing")
 
         self.f_logger.log_list(log_list=items_list, text="Ebay::Parsed list: ")
 
