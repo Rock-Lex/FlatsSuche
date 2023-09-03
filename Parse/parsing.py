@@ -7,6 +7,7 @@ from Parse.parse_context import PARSE_CONTEXT
 from Parse.log_parsing import LOG_PARSING
 from Parse.lists_handle import *
 from Parse.ebay_parsing import EBAY_PARSING
+from Parse.wg_gesucht_parsing import WGGESUCHT_PARSING
 
 DEBUG = False
 LOG = True
@@ -24,7 +25,7 @@ class PARSER:
         self.parseData = parseData
         self.logger = LOG_PARSING(logger)
         self.ebay_parser = EBAY_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
-        self.wg_parser = ""
+        self.wg_parser = WGGESUCHT_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
 
     def get_list(self, site, location, swap):
         if LOG:
@@ -37,24 +38,24 @@ class PARSER:
             diff_items = diff_list(self.context.wg.wg_lists_old[location], self.context.wg.wg_lists[location])
         elif site == "all":
             diff_items = diff_list(self.context.wg.wg_lists_old[location], self.context.wg.wg_lists[location])
-            diff_items.extend(self.__ebay_get_list(swap, location))
+            diff_items.extend(self.ebay_parser.get_list(swap, location))
 
         if LOG:
             self.logger.log_list(log_list=diff_items, text="Final diff list:")
 
         return diff_items
 
-    def make(self, site="ebay", location="", priceOt="", priceDo="", swap=2):
+    def make(self, site="all", location="", priceOt="", priceDo="", swap=2):
         if LOG:
             self.logger.log("Start parsing...")
 
         if site == "all":
             self.ebay_parser.parse(location, priceOt, priceDo, str(swap))
-            self.__wg_parse(location, priceDo, str(swap))
+            self.wg_parser.parse(location, priceDo, str(swap))
         elif site == "ebay":
             self.ebay_parser.parse(location, priceOt, priceDo, str(swap))
         elif site == "wggesucht":
-            self.__wg_parse(location, priceDo, str(swap))
+            self.wg_parser.parse(location, priceDo, str(swap))
 
 
 if DEBUG:
@@ -82,28 +83,22 @@ if DEBUG:
 
     logger = loggerInit()
     request = PARSER(parseData, logger)
-    site = "ebay"
+    site = "wggesucht"
     location = "Berlin"
     swap = 2
 
-    request.make(site=site, location=location, priceDo=1500, swap=swap)
+    # request.make(site=site, location=location, priceDo=1500, swap=swap)
 
 
 
+    request.make(site=site, location=location, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
+    a = request.get_list(site=site, location=location, swap=swap)
+    for item in a:
+        print("ITEM")
+        print("img:" + item.img)
+        print("url:" + item.url)
+        print("price:" + item.price)
 
-
-
-
-
-
-    # request.make(site=site, location=location, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
-    # a = request.get_list(site=site, location=location, swap=swap)
-    # for item in a:
-    #     print("ITEM")
-    #     print("img:" + item.img)
-    #     print("url:" + item.url)
-    #     print("price:" + item.price)
-    #
     # print("-------------------------")
     # request.make(site=site, location=location, priceDo=2000, swap=swap)  # Wg gesucht - 10k geht nicht
     # b = request.get_list(site=site, location=location, swap=swap)

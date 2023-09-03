@@ -14,7 +14,7 @@ import logging
 import socket
 from logging.handlers import SysLogHandler
 
-SITE = "ebay"
+SITE = "all"
 TIME_IN_SECONDS = 50
 BOT_TOKEN = "BotToken"
 # BOT_TOKEN = "deployBotToken"
