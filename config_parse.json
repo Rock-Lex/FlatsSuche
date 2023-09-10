@@ -89,7 +89,8 @@
             "Nuernberg": "Nurnberg.96.1",
             "Essen": "Essen.35.1",
             "Bonn": "Bonn.13.1",
-            "Kiel": ""
+            "Kiel": "Kiel.71.1",
+            "Rostock": "Rostock.115.1"
         },
         "city_end": {
             "Berlin": "&city_id=8",
@@ -107,7 +108,31 @@
             "Nuernberg": "&city_id=96",
             "Essen": "&city_id=35",
             "Bonn": "&city_id=13",
-            "Kiel": ""
+            "Kiel": "&city_id=71",
+            "Rostock": "&city_id=115"
+        }
+    },
+    "immoscout": {
+        "base_url": "https://www.immobilienscout24.de/Suche/de/",
+        "end_url": "wohnung-mieten?price=PRICEFROM.0-PRICETO.0&pricetype=calculatedtotalrent&pagenumber=1",
+        "city_start": {
+            "Berlin": "berlin/berlin/",
+            "Hamburg": "hamburg/hamburg/",
+            "Muenchen": "bayern/muenchen-kreis/",
+            "Frankfurt_main": "hessen/frankfurt-am-main/",
+            "Hannover": "niedersachsen/hannover-kreis/",
+            "Leipzig": "sachsen/leipzig-kreis/",
+            "Dresden": "sachsen/dresden/",
+            "Dortmund": "nordrhein-westfalen/dortmund/",
+            "Koeln": "nordrhein-westfalen/koeln/",
+            "Duesseldorf": "nordrhein-westfalen/duesseldorf/",
+            "Bremen": "bremen/",
+            "Stuttgart": "baden-wuerttemberg/stuttgart/",
+            "Nuernberg": "bayern/nuernberg/",
+            "Essen": "nordrhein-westfalen/essen/",
+            "Bonn": "nordrhein-westfalen/bonn/",
+            "Kiel": "schleswig-holstein/kiel/",
+            "Rostock": "mecklenburg-vorpommern/rostock-kreis/"
         }
     }
 }
