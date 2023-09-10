@@ -3,6 +3,6 @@ geopy
 beautifulsoup4
 requests
 lxml
-psycopg2
 pymongo
 dnspython
+urllib3==1.26.6
