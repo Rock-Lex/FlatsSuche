@@ -15,9 +15,8 @@ import socket
 from logging.handlers import SysLogHandler
 
 SITE = "all"
-
-TIME_IN_SECONDS = 240
 SERVER = True
+TIME_IN_SECONDS = 240
 
 # BOT_TOKEN = "BotToken"
 BOT_TOKEN = "deployBotToken"
@@ -156,8 +155,6 @@ if __name__ == '__main__':
     """parser"""
     parser = PARSER(parseData, logger)
     helpers = HELPERS(phrases)
-
-
 
     notificThread = Thread(target=notification_users, args=(databaseManager, parser, url, logger))
     notificThread.start()

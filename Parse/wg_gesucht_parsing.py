@@ -88,4 +88,5 @@ class WGGESUCHT_PARSING:
             self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]
             self.context.wg.wg_lists[location] = items_list
         else:
-            self.context.wg.wg_lists[location] = items_list
+            self.f_logger.log("WgGesucht::Error: Parsed list is empty")
+            self.context.wg.wg_lists_old[location] = self.context.wg.wg_lists[location]

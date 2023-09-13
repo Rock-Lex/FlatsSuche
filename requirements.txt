@@ -5,4 +5,4 @@ requests
 lxml
 pymongo
 dnspython
-urllib3==1.26.6
+urllib3
