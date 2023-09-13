@@ -14,6 +14,16 @@ class WGGESUCHT_PARSING:
     def get_data(self, site, partName):
         return self.parse_data[site][partName]
 
+    def get_list(self, location):
+        self.f_logger.log_list(log_list=self.context.wg.wg_lists_old[location],
+                               text=f"WgGesucht::Old list({location}):")
+        self.f_logger.log_list(log_list=self.context.wg.wg_lists[location],
+                               text=f"WgGesucht::New list({location}):")
+
+        diff_items = diff_list(self.context.wg.wg_lists_old[location],
+                               self.context.wg.wg_lists[location])
+        return diff_items
+
     def parse(self, location, priceDo, swap):
         url = self.create_url(location=location, priceDo=priceDo, swap=swap)
         page = proxy_request(url=url)

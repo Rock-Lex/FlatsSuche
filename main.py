@@ -15,9 +15,9 @@ import socket
 from logging.handlers import SysLogHandler
 
 SITE = "all"
-TIME_IN_SECONDS = 20
-BOT_TOKEN = "BotToken"
-# BOT_TOKEN = "deployBotToken"
+TIME_IN_SECONDS = 300
+# BOT_TOKEN = "BotToken"
+BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
@@ -68,7 +68,7 @@ def notification_users(databaseManager, parser, url, logger):
                             if value["min_price"] < int(item.price) < value["max_price"]:
                                 # self.updater.bot.sendMessage(value.chat_id, f'Url: {item.url} \n Price = {item.price}')
                                 message = f"{item.description}\n" \
-                                          f"Price:   *{item.price} €*\n" \
+                                          f"Price: *{item.price} €*\n" \
                                           f"Address: *{item.address}*\n" \
                                           f"[⁠]({item.img})"
                                           # f"<a href=\"{item.url}\">URL</a>\n" \

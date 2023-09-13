@@ -31,9 +31,9 @@ class PARSER:
         if site == "ebay":
             diff_items = self.ebay_parser.get_list(swap, location)
         elif site == "wggesucht":
-            diff_items = diff_list(self.context.wg.wg_lists_old[location], self.context.wg.wg_lists[location])
+            diff_items = self.wg_parser.get_list(location)
         elif site == "all":
-            diff_items = diff_list(self.context.wg.wg_lists_old[location], self.context.wg.wg_lists[location])
+            diff_items = self.wg_parser.get_list(location)
             diff_items.extend(self.ebay_parser.get_list(swap, location))
 
         if LOG:
