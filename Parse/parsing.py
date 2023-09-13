@@ -6,7 +6,7 @@ from Parse.ebay_parsing import EBAY_PARSING
 from Parse.wg_gesucht_parsing import WGGESUCHT_PARSING
 from Parse.immoscout_parsing import IMMOSCOUT_PARSING
 
-DEBUG = True
+DEBUG = False
 LOG = True
 
 if DEBUG:

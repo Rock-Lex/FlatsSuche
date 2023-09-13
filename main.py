@@ -16,6 +16,7 @@ from logging.handlers import SysLogHandler
 
 SITE = "all"
 TIME_IN_SECONDS = 240
+SERVER = True
 
 # BOT_TOKEN = "BotToken"
 BOT_TOKEN = "deployBotToken"
@@ -117,16 +118,28 @@ if __name__ == '__main__':
     logger.info(f"#      on  the {BOT_TOKEN}          #")
     logger.info("##################################")
 
-    with open("config_bot.json") as file:
-        data = json.load(file)
-        botData = data['bot']
+    if SERVER:
+        with open("/home/shared/projects/FlatsSuche/config_bot.json") as file:
+            data = json.load(file)
+            botData = data['bot']
 
-    with open("config_phrases.json", encoding='utf-8') as file:
-        data = json.load(file)
-        phrases = data['phrases']
+        with open("/home/shared/projects/FlatsSuche/config_phrases.json", encoding='utf-8') as file:
+            data = json.load(file)
+            phrases = data['phrases']
 
-    with open('config_parse.json') as file:
-        parseData = json.load(file)
+        with open('/home/shared/projects/FlatsSuche/config_parse.json') as file:
+            parseData = json.load(file)
+    else:
+        with open("config_bot.json") as file:
+            data = json.load(file)
+            botData = data['bot']
+
+        with open("config_phrases.json", encoding='utf-8') as file:
+            data = json.load(file)
+            phrases = data['phrases']
+
+        with open('config_parse.json') as file:
+            parseData = json.load(file)
 
     token = botData[BOT_TOKEN]
 
