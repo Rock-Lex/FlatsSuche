@@ -36,7 +36,7 @@ class WGGESUCHT_PARSING:
             self.get_items_in_list(page=page, location=location)
         else:
             if self.if_log:
-                self.f_logger.log("Ebay::Error while parsing")
+                self.f_logger.log("WgGesucht::Error while parsing")
                 self.f_logger.log(BeautifulSoup(page.text, "html.parser").text)
 
     def create_url(self, location, priceDo=100000, swap=2):

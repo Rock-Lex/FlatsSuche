@@ -4,6 +4,7 @@ from Parse.log_parsing import LOG_PARSING
 from Parse.lists_handle import *
 from Parse.ebay_parsing import EBAY_PARSING
 from Parse.wg_gesucht_parsing import WGGESUCHT_PARSING
+from Parse.immoscout_parsing import IMMOSCOUT_PARSING
 
 DEBUG = False
 LOG = True
@@ -22,6 +23,7 @@ class PARSER:
         self.logger = LOG_PARSING(logger)
         self.ebay_parser = EBAY_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
         self.wg_parser = WGGESUCHT_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
+        self.immoscout_parser = IMMOSCOUT_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
 
     def get_list(self, site, location, swap):
         if LOG:
@@ -50,6 +52,8 @@ class PARSER:
             self.wg_parser.parse(location, priceDo, str(swap))
         elif site == "ebay":
             self.ebay_parser.parse(location, priceOt, priceDo, str(swap))
+        elif site == "immoscout":
+            self.immoscout_parser.parse(location, priceOt, priceDo)
         elif site == "wggesucht":
             self.wg_parser.parse(location, priceDo, str(swap))
 
@@ -79,22 +83,19 @@ if DEBUG:
 
     logger = loggerInit()
     request = PARSER(parseData, logger)
-    site = "wggesucht"
+    site = "immoscout"
     location = "Berlin"
     swap = 2
 
     # request.make(site=site, location=location, priceDo=1500, swap=swap)
-
-
-
-    request.make(site=site, location=location, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
-    a = request.get_list(site=site, location=location, swap=swap)
-    for item in a:
-        print("ITEM")
-        print("img:" + item.img)
-        print("url:" + item.url)
-        print("price:" + item.price)
-        print("address:" + item.address)
+    request.make(site=site, location=location, priceOt=10, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
+    # a = request.get_list(site=site, location=location, swap=swap)
+    # for item in a:
+    #     print("ITEM")
+    #     print("img:" + item.img)
+    #     print("url:" + item.url)
+    #     print("price:" + item.price)
+    #     print("address:" + item.address)
 
     # print("-------------------------")
     # request.make(site=site, location=location, priceDo=2000, swap=swap)  # Wg gesucht - 10k geht nicht
