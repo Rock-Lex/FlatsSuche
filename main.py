@@ -4,7 +4,6 @@ import bot
 from dbmanager import PyMongoDBManager
 
 from time import sleep
-# import parse
 from Parse.parsing import PARSER
 import requests
 import json
@@ -17,8 +16,8 @@ from logging.handlers import SysLogHandler
 SITE = "all"
 TIME_IN_SECONDS = 240
 
-# BOT_TOKEN = "BotToken"
-BOT_TOKEN = "deployBotToken"
+BOT_TOKEN = "BotToken"
+# BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
@@ -69,8 +68,8 @@ def notification_users(databaseManager, parser, url, logger):
                             if value["min_price"] < int(item.price) < value["max_price"]:
                                 # self.updater.bot.sendMessage(value.chat_id, f'Url: {item.url} \n Price = {item.price}')
                                 message = f"{item.description}\n" \
-                                          f"Price: *{item.price} €*\n" \
-                                          f"Address: *{item.address}*\n" \
+                                          f"\n*{item.price} €*\n" \
+                                          f"*{item.address}*\n" \
                                           f"[⁠]({item.img})"
                                           # f"<a href=\"{item.url}\">URL</a>\n" \
                                 url_for_request = url

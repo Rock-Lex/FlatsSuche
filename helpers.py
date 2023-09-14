@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
 from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
+
 locations = \
     {
     "Berlin": "Berlin",
@@ -17,7 +18,10 @@ locations = \
     "Nürnberg": "Nuernberg",
     "Essen": "Essen",
     "Bonn": "Bonn",
+    "Kiel": "Kiel",
+    "Rostock": "Rostock"
     }
+
 
 class HELPERS:
     def __init__(self, phrases):

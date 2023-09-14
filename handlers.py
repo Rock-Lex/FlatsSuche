@@ -145,6 +145,16 @@ class StartHandler(BasicHandler):
     def settings_up(self, update, context):
         bot = context.bot
         lang = self.databaseManager.get_first({'chat_id': update.message.chat.id})['language']
+        city = self.databaseManager.get_first({'chat_id': update.message.chat.id})['city']
+        min_price = self.databaseManager.get_first({'chat_id': update.message.chat.id})['min_price']
+        max_price = self.databaseManager.get_first({'chat_id': update.message.chat.id})['max_price']
+
+        current_search_settings_phrase = self.helper.getPhrase("current_search", lang)
+        current_search_settings_phrase = current_search_settings_phrase.replace("{city}", city)
+        current_search_settings_phrase = current_search_settings_phrase.replace("{min_price}", str(min_price))
+        current_search_settings_phrase = current_search_settings_phrase.replace("{max_price}", str(max_price))
+
+        bot.sendMessage(update.message.chat.id, current_search_settings_phrase)
         bot.sendMessage(update.message.chat.id, self.helper.getPhrase("CONFIGURATE_SETTINGS_MESSAGE", lang),
                         reply_markup=self.helper.getKeyboard("fiveOptionsKeyboard"))
 

@@ -4,7 +4,6 @@ from telegram.update import Update
 from telegram import Message
 import logging
 from geopy.geocoders import Nominatim
-import parse
 import sqlite3
 from threading import Thread
 from time import sleep
