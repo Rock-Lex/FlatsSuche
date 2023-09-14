@@ -16,8 +16,8 @@ from logging.handlers import SysLogHandler
 SITE = "all"
 TIME_IN_SECONDS = 240
 
-BOT_TOKEN = "BotToken"
-# BOT_TOKEN = "deployBotToken"
+# BOT_TOKEN = "BotToken"
+BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
