@@ -19,7 +19,8 @@
             "selecting_city": "Please, select your city from my proposals:",
             "TRY_TO_SET_LANGUAGE_AGAIN": "Please, enter one of the languages you see on your Keyboard, or type EN or GE if you cant see any keyboard",
             "selecting_swap": "1. To search only swap flats.\n2. To search only no swap flats \n3. To select both options",
-            "current_search": "Your search settings at the moment: \n\nCity: {city} \nMin price: {min_price} € \nMax price: {max_price} €\n"
+            "current_search": "Your search settings at the moment: \n\nCity: {city} \nMin price: {min_price} € \nMax price: {max_price} €\n",
+            "wrong_price": "You spelled it wrong. Please try again"
         },
         "DE": {
             "MIN_PRICE_HIGHER": "Deine Mindestpreis ist höher als der Höchstpreis. Bitte gib weniger als den Höchstpreis ein.\nDeine aktueller Höchstpreis ist {{max_price}}",
@@ -40,7 +41,9 @@
             "selecting_city": "Bitte wähle deine Stadt aus meinen Vorschlägen aus:",
             "TRY_TO_SET_LANGUAGE_AGAIN": "Bitte gib eine der Sprachen ein, die du auf deine Tastatur siehst, andernfalls gib EN oder GE ein, wenn du keine Tastatur sehen kannst.",
             "selecting_swap": "1. Um nur Tausch Angebote zu suchen.\n2. Um nur nicht Tausch Angebote zu suchen.\n3. Um beide Optionen auszuwählen",
-            "current_search": "Deine aktuellen Suchkriterien: \n\nStadt: {city} \nMin Preis: {min_price} €\nMax Preis: {max_price} €\n"
+            "current_search": "Deine aktuellen Suchkriterien: \n\nStadt: {city} \nMin Preis: {min_price} €\nMax Preis: {max_price} €\n",
+            "wrong_price": "Du hast es falsch geschrieben. Bitte versuche es erneut."
+
         }
     }
 }

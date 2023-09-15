@@ -234,8 +234,8 @@ class StartHandler(BasicHandler):
                 self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"max_price": int(text)})
                 bot.sendMessage(update.message.chat.id, self.helper.getPhrase("maxPriceEntered", lang).replace("{text}", text))
         else:
-            # ADD SOME FALLBACK HERE
-            pass
+            bot = context.bot
+            bot.sendMessage(update.message.chat.id, self.helper.getPhrase("wrong_price", lang))
 
         return self.settings_up(update, context)
 
@@ -254,8 +254,8 @@ class StartHandler(BasicHandler):
                 self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"min_price": int(text)})
                 bot.sendMessage(update.message.chat.id, self.helper.getPhrase("minPriceEntered", lang).replace("{text}", text))
         else:
-            # ADD SOME FALLBACK HERE
-            pass
+            bot = context.bot
+            bot.sendMessage(update.message.chat.id, self.helper.getPhrase("wrong_price", lang))
 
         return self.settings_up(update, context)
 
