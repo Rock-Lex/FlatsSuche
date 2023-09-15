@@ -2,19 +2,19 @@
 
 def search_in_list(list, search_item):
 
-    """Method 1"""
+    """Method 1: Compare URL"""
     # for item in list:
     #     if item.url == search_item.url:
     #         if item.price == search_item.price:
     #             return True
 
-    """Method 2"""
+    """Method 2: Compare Price and Img"""
     # for item in list:
     #     if item.price == search_item.price and item.img == search_item.img:
     #         return True
     # return False
 
-    """Method 3"""
+    """Method 3: Compare Img"""
     for item in list:
         if item.img == search_item.img:
             return True
