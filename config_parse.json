@@ -16,7 +16,16 @@
         "Essen": "Essen",
         "Bonn": "Bonn",
         "Kiel": "Kiel",
-        "Rostock": "Rostock"
+        "Rostock": "Rostock",
+        "Duisburg": "Duisburg",
+        "Bochum": "Bochum",
+        "Wuppertal": "Wuppertal",
+        "Bielefeld": "Bielefeld",
+        "Münster": "Muenster",
+        "Mannheim": "Mannheim",
+        "Karlsruhe": "Karlsruhe",
+        "Augsburg": "Augsburg",
+        "Wiesbaden": "Wiesbaden"
     },
     "ebay": {
         "base_url": "https://www.kleinanzeigen.de/s-wohnung-mieten/",
@@ -44,7 +53,17 @@
             "Essen": "essen/",
             "Bonn": "bonn/",
             "Kiel": "kiel/",
-            "Rostock": "rostock/"
+            "Rostock": "rostock/",
+            "Duisburg": "duisburg/",
+            "Bochum": "bochum/",
+            "Wuppertal": "wuppertal/",
+            "Bielefeld": "bielefeld/",
+            "Muenster": "muenster-%28westfalen%29/",
+            "Mannheim": "mannheim/",
+            "Karlsruhe": "karlsruhe/",
+            "Augsburg": "augsburg/",
+            "Wiesbaden": "wiesbaden/"
+
         },
         "city_end": {
             "Berlin": "/c203l3331",
@@ -63,7 +82,16 @@
             "Essen": "/c203l2027",
             "Bonn": "/c203l1038",
             "Kiel": "/c203l663",
-            "Rostock": "/c203l137"
+            "Rostock": "/c203l137",
+            "Duisburg": "/c203l2131",
+            "Bochum": "/c203l1932",
+            "Wuppertal": "/c203l1561",
+            "Bielefeld": "/c203l1056",
+            "Muenster": "/c203l929",
+            "Mannheim": "/c203l7971",
+            "Karlsruhe": "/c203l9186",
+            "Augsburg": "/c203l7518",
+            "Wiesbaden": "/c203l4897"
         }
     },
     "wg": {
@@ -90,7 +118,16 @@
             "Essen": "Essen.35.1",
             "Bonn": "Bonn.13.1",
             "Kiel": "Kiel.71.1",
-            "Rostock": "Rostock.115.1"
+            "Rostock": "Rostock.115.1",
+            "Duisburg": "Duisburg.28.1",
+            "Bochum": "Bochum.12.1",
+            "Wuppertal": "Wuppertal.142.1",
+            "Bielefeld": "Bielefeld.10.1",
+            "Muenster": "Muenster.91.1",
+            "Mannheim": "Mannheim.85.1",
+            "Karlsruhe": "Karlsruhe.68.1",
+            "Augsburg": "Augsburg.2.1",
+            "Wiesbaden": "Wiesbaden.135.1"
         },
         "city_end": {
             "Berlin": "&city_id=8",
@@ -109,7 +146,16 @@
             "Essen": "&city_id=35",
             "Bonn": "&city_id=13",
             "Kiel": "&city_id=71",
-            "Rostock": "&city_id=115"
+            "Rostock": "&city_id=115",
+            "Duisburg": "&city_id=28",
+            "Bochum": "&city_id=12",
+            "Wuppertal": "&city_id=142",
+            "Bielefeld": "&city_id=10",
+            "Muenster": "&city_id=91",
+            "Mannheim": "&city_id=85",
+            "Karlsruhe": "&city_id=68",
+            "Augsburg": "&city_id=2",
+            "Wiesbaden": "&city_id=135"
         }
     },
     "immoscout": {

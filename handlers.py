@@ -19,7 +19,16 @@ locations = \
     "Essen": "Essen",
     "Bonn": "Bonn",
     "Kiel": "Kiel",
-    "Rostock": "Rostock"
+    "Rostock": "Rostock",
+    "Duisburg": "Duisburg",
+    "Bochum": "Bochum",
+    "Wuppertal": "Wuppertal",
+    "Bielefeld": "Bielefeld",
+    "Münster": "Muenster",
+    "Mannheim": "Mannheim",
+    "Karlsruhe": "Karlsruhe",
+    "Augsburg": "Augsburg",
+    "Wiesbaden": "Wiesbaden"
     }
 
 

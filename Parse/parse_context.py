@@ -17,7 +17,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.ebay_lists_old = {
             "Berlin": [],
@@ -36,7 +45,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.ebay_lists_nosw = {
             "Berlin": [],
@@ -55,7 +73,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.ebay_lists_old_nosw = {
             "Berlin": [],
@@ -74,7 +101,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.ebay_lists_both = {
             "Berlin": [],
@@ -93,7 +129,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.ebay_lists_old_both = {
             "Berlin": [],
@@ -112,7 +157,16 @@ class EBAY:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
 
 
@@ -141,7 +195,16 @@ class WG:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
         self.wg_lists_old = {
             "Berlin": [],
@@ -160,7 +223,16 @@ class WG:
             "Essen": [],
             "Bonn": [],
             "Kiel": [],
-            "Rostock": []
+            "Rostock": [],
+            "Duisburg": [],
+            "Bochum": [],
+            "Wuppertal": [],
+            "Bielefeld": [],
+            "Muenster": [],
+            "Mannheim": [],
+            "Karlsruhe": [],
+            "Augsburg": [],
+            "Wiesbaden": [],
         }
 
 class PARSE_CONTEXT:
@@ -182,7 +254,16 @@ class PARSE_CONTEXT:
             "Essen",
             "Bonn",
             "Kiel",
-            "Rostock"
+            "Rostock",
+            "Duisburg",
+            "Bochum",
+            "Wuppertal",
+            "Bielefeld",
+            "Münster",
+            "Mannheim",
+            "Karlsruhe",
+            "Augsburg",
+            "Wiesbaden"
         ]
         self.ebay = EBAY()
         self.wg = WG()
