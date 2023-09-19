@@ -3,7 +3,7 @@ import requests
 import random
 
 
-def proxy_request(url, **kwargs):
+def proxy_request(url, antiblock, **kwargs):
     ip = ["8.219.97.248:80"]
     ip_addresses = ["159.197.250.171:3128", "193.104.189.68:3128", "157.100.12.138:999", "8.219.97.248:80"]
     AGENTS = [
@@ -17,18 +17,33 @@ def proxy_request(url, **kwargs):
         'Opera/9.00 (Windows NT 5.1; U; en)'
     ]
     random_cookie = str(uuid4())
+    if antiblock:
+        agent = random.randint(0, len(AGENTS) - 1)
+        headers = {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "de-DE,de;q=0.9",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "User-Agent": f"{AGENTS[agent]}",
+            "localstorageAvailable:": "true",
+            "X-Amzn-Trace-Id": "Root=1-6509d845-3fb55f98604690e258ea6c6c",
+            "Cookie": "reese84={}".format(random_cookie)
+        }
+        response = requests.get(url, headers=headers)
+        return response
 
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-        "Cookie": "reese84={}".format(random_cookie)
-    }
+    else:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Cookie": "reese84={}".format(random_cookie)
+        }
 
     try:
         # raise Exception
         response = requests.get(url, headers=headers)
-        # self.logger.info("Request was made without proxies")
-    except:
-        # self.logger.info("Error. Looking for proxy....")
+    except Exception as e:
         while True:
             try:
                 proxy = random.randint(0, len(ip_addresses) - 1)

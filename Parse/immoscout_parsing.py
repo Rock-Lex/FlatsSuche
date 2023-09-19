@@ -16,7 +16,7 @@ class IMMOSCOUT_PARSING:
 
     def parse(self, location, priceFrom, priceTo):
         url = self.create_url(location=location, priceFrom=priceFrom, priceTo=priceTo)
-        page = proxy_request(url=url)
+        page = proxy_request(url=url, antiblock=True)
         print(url)
         if self.if_log:
             self.f_logger.log("Immoscout::URL: " + url)

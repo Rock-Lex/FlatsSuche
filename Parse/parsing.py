@@ -83,25 +83,26 @@ if DEBUG:
 
     logger = loggerInit()
     request = PARSER(parseData, logger)
-    site = "wggesucht"
+    site = "immoscout"
     location = "Berlin"
     swap = 2
 
     # request.make(site=site, location=location, priceDo=1500, swap=swap)
     request.make(site=site, location=location, priceOt=10, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
-    a = request.get_list(site=site, location=location, swap=swap)
-    for item in a:
-        print("ITEM")
-        print("img:" + item.img)
-        print("url:" + item.url)
-        print("price:" + item.price)
-        print("address:" + item.address)
 
-    print("-------------------------")
-    request.make(site=site, location=location, priceOt= 10, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
-    b = request.get_list(site=site, location=location, swap=swap)
-    for item in b:
-        print("ITEM")
-        print("img:" + item.img)
-        print("url:" + item.url)
-        print("price:" + item.price)
+    # a = request.get_list(site=site, location=location, swap=swap)
+    # for item in a:
+    #     print("ITEM")
+    #     print("img:" + item.img)
+    #     print("url:" + item.url)
+    #     print("price:" + item.price)
+    #     print("address:" + item.address)
+    #
+    # print("-------------------------")
+    # request.make(site=site, location=location, priceOt= 10, priceDo=1500, swap=swap)  # Wg gesucht - 10k geht nicht
+    # b = request.get_list(site=site, location=location, swap=swap)
+    # for item in b:
+    #     print("ITEM")
+    #     print("img:" + item.img)
+    #     print("url:" + item.url)
+    #     print("price:" + item.price)
