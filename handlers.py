@@ -1,5 +1,6 @@
 from telegram.ext import CommandHandler, MessageHandler, Filters, ConversationHandler
-
+from utils import *
+import requests
 
 locations = \
     {
@@ -48,8 +49,10 @@ class BasicHandler:
 
 
 class StartHandler(BasicHandler):
-    def __init__(self, *args):
+    def __init__(self, url, parser, *args):
         BasicHandler.__init__(self, *args)
+        self.parser = parser
+        self.url = url
         self.config_handler()
 
     def config_handler(self):
@@ -95,7 +98,8 @@ class StartHandler(BasicHandler):
                     'swap': 0,
                     'city': '',
                     'send_notification': False,
-                    'language': 'EN'
+                    'language': 'EN',
+                    'new_user': True
                 })
             self.databaseManager.edit_one({'chat_id': update.message.chat.id}, {'send_notification': False})
 
@@ -201,9 +205,24 @@ class StartHandler(BasicHandler):
     def start_searching(self, update, context):
         bot = context.bot
 
+        chat_id = update.message.chat.id
+        user_instance = self.databaseManager.get_first({'chat_id': chat_id})
+
         lang = self.databaseManager.get_first({'chat_id': update.message.chat.id})['language']
         bot.sendMessage(update.message.chat.id, self.helper.getPhrase("GENERAL_MESSAGE", lang),
                         reply_markup=self.helper.getKeyboard("generalKeyboard"))
+
+        if 'new_user' in user_instance and user_instance['new_user']:
+            self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"new_user": False})
+
+            if not self.parser.get_list('all', user_instance['city'], user_instance['swap']):
+                self.parser.make(site='all', location=user_instance['city'], swap=user_instance['swap'])
+            parsed_items = self.parser.get_list('all', user_instance['city'], user_instance['swap'])
+            for item in parsed_items:
+                if user_instance["min_price"] < int(item.price) < user_instance["max_price"]:
+                    message = item_to_text(item)
+                    url_for_request = make_url(self.url, str(chat_id), "markdown", message, item.url)
+                    requests.get(url_for_request)
 
         self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"send_notification": True})
         return ConversationHandler.END

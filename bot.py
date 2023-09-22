@@ -1,15 +1,6 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
-from telegram import KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove
-from telegram.update import Update
-from telegram import Message
+from telegram.ext import Updater
 import logging
 from geopy.geocoders import Nominatim
-import sqlite3
-from threading import Thread
-from time import sleep
-#import psycopg2
-from helpers import HELPERS
-from dbmanager import PyMongoDBManager
 import handlers
 geolocator = Nominatim(user_agent="geoapiExercises")
 
@@ -20,10 +11,14 @@ logger = logging.getLogger(__name__)
 
 
 class BOT:
-    def __init__(self, TOKEN, databaseManager, helpers, *args):
+    def __init__(self, TOKEN, databaseManager, helpers, parser, url, *args):
         """python telegram bot vars"""
         self.updater = Updater(TOKEN, use_context=True)
         self.dp = self.updater.dispatcher
+
+        """parser"""
+        self.parser = parser
+        self.url = url
 
         """database manager"""
         self.databaseManager = databaseManager
@@ -40,7 +35,7 @@ class BOT:
         Setting handlers for conversational talks here
         """
         """/start command handler"""
-        start_handler = handlers.StartHandler(self.updater, self.dp, self.databaseManager, self.helper)
+        start_handler = handlers.StartHandler(self.url, self.parser, self.updater, self.dp, self.databaseManager, self.helper)
         self.dp.add_handler(start_handler.return_handler())
 
         settings_handler = handlers.SettingsHandler(self.updater, self.dp, self.databaseManager, self.helper)

@@ -12,12 +12,13 @@ from helpers import HELPERS
 import logging
 import socket
 from logging.handlers import SysLogHandler
+from utils import *
 
 SITE = "all"
 TIME_IN_SECONDS = 240
 
-# BOT_TOKEN = "BotToken"
-BOT_TOKEN = "deployBotToken"
+BOT_TOKEN = "BotToken"
+# BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
@@ -67,19 +68,12 @@ def notification_users(databaseManager, parser, url, logger):
                         try:
                             if value["min_price"] < int(item.price) < value["max_price"]:
                                 # self.updater.bot.sendMessage(value.chat_id, f'Url: {item.url} \n Price = {item.price}')
-                                message = f"{item.description}\n" \
-                                          f"\n*{item.price} €*\n" \
-                                          f"*{item.address}*\n" \
-                                          f"[⁠]({item.img})"
-                                          # f"<a href=\"{item.url}\">URL</a>\n" \
-                                url_for_request = url
-                                url_for_request = url_for_request.replace("{chat_id}", str(value["chat_id"]))
-                                url_for_request = url_for_request.replace("{parse_mode}", "markdown")
-                                url_for_request = url_for_request.replace("{text}", message)
-                                url_for_request = url_for_request.replace("{item_url}", item.url)
-                                # url_for_request = url_for_request.replace("{inline_keyboard}", str(inline_markup))
+                                message = item_to_text(item)
+                                url_for_request = make_url(url, str(value["chat_id"]), "markdown", message, item.url)
+
                                 print("url_for_request")
                                 print(url_for_request)
+
                                 requests.get(url_for_request)
                         except Exception:
                             pass
@@ -156,6 +150,6 @@ if __name__ == '__main__':
 
     notificThread = Thread(target=notification_users, args=(databaseManager, parser, url, logger))
     notificThread.start()
-    botUpdater = bot.BOT(token, databaseManager, helpers)
+    botUpdater = bot.BOT(token, databaseManager, helpers, parser, url)
 
     botUpdater.run()
