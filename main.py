@@ -17,7 +17,8 @@ from utils import *
 SITE = "all"
 TIME_IN_SECONDS = 240
 
-BOT_TOKEN = "BotToken"
+# BOT_TOKEN = "BotTokenVlad"
+BOT_TOKEN = "BotTokenOleks"
 # BOT_TOKEN = "deployBotToken"
 
 
