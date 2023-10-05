@@ -26,7 +26,7 @@ class WGGESUCHT_PARSING:
 
     def parse(self, location, priceDo, swap):
         url = self.create_url(location=location, priceDo=priceDo, swap=swap)
-        page = proxy_request(url=url)
+        page = proxy_request(url=url, antiblock=False)
 
         if self.if_log:
             self.f_logger.log("WgGesucht::URL: " + url)
