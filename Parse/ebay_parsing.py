@@ -16,7 +16,7 @@ class EBAY_PARSING:
 
     def parse(self, location, priceOt, priceDo, swap):
         url = self.create_url(location, priceOt, priceDo, swap)
-        page = proxy_request(url=url)
+        page = proxy_request(url=url, antiblock=False)
         # print(page.text)
 
         if self.if_log:
