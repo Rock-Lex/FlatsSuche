@@ -15,11 +15,11 @@ from logging.handlers import SysLogHandler
 from utils import *
 
 SITE = "all"
-TIME_IN_SECONDS = 10
+TIME_IN_SECONDS = 240
 
 # BOT_TOKEN = "BotTokenVlad"
-BOT_TOKEN = "BotTokenOleks"
-# BOT_TOKEN = "deployBotToken"
+# BOT_TOKEN = "BotTokenOleks"
+BOT_TOKEN = "deployBotToken"
 
 
 class ContextFilter(logging.Filter):
