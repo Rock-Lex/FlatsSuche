@@ -14,6 +14,29 @@ class EBAY_PARSING:
     def get_data(self, site, partName):
         return self.parse_data[site][partName]
 
+    def get_last_list(self, swap, location):
+        if swap == 0:
+            if self.context.ebay.ebay_lists_nosw[location]:
+                return self.context.ebay.ebay_lists_nosw[location]
+            elif self.context.ebay.ebay_lists_old_nosw[location]:
+                return self.context.ebay.ebay_lists_old_nosw[location]
+            return []
+        elif swap == 1:
+            if self.context.ebay.ebay_lists[location]:
+                return self.context.ebay.ebay_lists[location]
+            elif self.context.ebay.ebay_lists_old[location]:
+                return self.context.ebay.ebay_lists_old[location]
+            return []
+        elif swap == 2:
+            if self.context.ebay.ebay_lists_both[location]:
+                return self.context.ebay.ebay_lists_both[location]
+            elif self.context.ebay.ebay_lists_old_both[location]:
+                return self.context.ebay.ebay_lists_old_both[location]
+            else:
+                return []
+        else:
+            return []
+
     def parse(self, location, priceOt, priceDo, swap):
         url = self.create_url(location, priceOt, priceDo, swap)
         page = proxy_request(url=url, antiblock=False)

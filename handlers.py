@@ -93,7 +93,7 @@ class StartHandler(BasicHandler):
             if not self.databaseManager.is_in_db({'chat_id': update.message.chat.id}):
                 self.databaseManager.add_one({
                     'chat_id': update.message.chat.id,
-                    'max_price': 1000000,                   # handle that shit
+                    'max_price': 10000,                   # handle that shit
                     'min_price': 0,
                     'swap': 0,
                     'city': '',
@@ -215,14 +215,18 @@ class StartHandler(BasicHandler):
         if 'new_user' in user_instance and user_instance['new_user']:
             self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"new_user": False})
 
-            if not self.parser.get_list('all', user_instance['city'], user_instance['swap']):
-                self.parser.make(site='all', location=user_instance['city'], swap=user_instance['swap'])
-            parsed_items = self.parser.get_list('all', user_instance['city'], user_instance['swap'])
+            # if not self.parser.get_last_list('all', user_instance['city'], user_instance['swap']):
+            #     self.parser.make(site='all', location=user_instance['city'], swap=user_instance['swap'])
+            # idk why, but when we call get_last_list twice. We are getting weird list back
+            parsed_items = self.parser.get_last_list('all', user_instance['city'], user_instance['swap'])
             for item in parsed_items:
-                if user_instance["min_price"] < int(item.price) < user_instance["max_price"]:
-                    message = item_to_text(item)
-                    url_for_request = make_url(self.url, str(chat_id), "markdown", message, item.url)
-                    requests.get(url_for_request)
+                try:
+                    if user_instance["min_price"] < int(item.price) < user_instance["max_price"]:
+                        message = item_to_text(item)
+                        url_for_request = make_url(self.url, str(chat_id), "markdown", message, item.url)
+                        requests.get(url_for_request)
+                except Exception as exception:
+                    pass
 
         self.databaseManager.edit_one({"chat_id": update.message.chat.id}, {"send_notification": True})
         return ConversationHandler.END

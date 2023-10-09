@@ -1,5 +1,6 @@
 class ITEM:
-    def __init__(self, url="", price=0, address="-", description="-", img="-"):
+    def __init__(self, url="", price="", address="-", description="-", img="-"):
+        price = str(price).replace(".", "")
         self.url = url
         self.price = price
         self.address = address

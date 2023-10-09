@@ -25,7 +25,19 @@ class PARSER:
         self.wg_parser = WGGESUCHT_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
         self.immoscout_parser = IMMOSCOUT_PARSING(context=self.context, f_logger=self.logger, parse_data=self.parseData, if_log=LOG)
 
-    def get_list(self, site, location, swap):
+    def get_last_list(self, site, location, swap):
+        last_list = []
+        if site == "ebay":
+            last_list = self.ebay_parser.get_last_list(swap, location)
+        elif site == "wggesucht":
+            last_list = self.wg_parser.get_last_list(swap, location)
+        elif site == "all":
+            last_list = self.ebay_parser.get_last_list(swap, location)
+            last_list.extend(self.wg_parser.get_last_list(swap, location))
+
+        return last_list
+
+    def get_diff_list(self, site, location, swap):
         if LOG:
             self.logger.getting_parsed_data()
 

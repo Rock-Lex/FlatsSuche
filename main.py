@@ -61,7 +61,7 @@ def notification_users(databaseManager, parser, url, logger):
                 if databaseManager.is_in_db({'location': city, 'swap': swap}) is None:
                     continue
                 parser.make(site=SITE, location=city, swap=swap)
-                parsed_items = parser.get_list(SITE, city, swap)
+                parsed_items = parser.get_diff_list(SITE, city, swap)
 
                 users = databaseManager.get_many({'city': city, 'swap': swap})
                 for value in users:
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     logger.info("-")
     logger.info("##################################")
     logger.info("#         Bot is started         #")
-    logger.info(f"#      on  the {BOT_TOKEN}          #")
+    logger.info(f"#      on  the {BOT_TOKEN}      #")
     logger.info("##################################")
 
     # if SERVER:

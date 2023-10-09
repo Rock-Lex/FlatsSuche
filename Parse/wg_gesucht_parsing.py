@@ -14,6 +14,14 @@ class WGGESUCHT_PARSING:
     def get_data(self, site, partName):
         return self.parse_data[site][partName]
 
+    def get_last_list(self, swap, location):
+        if self.context.wg.wg_lists[location]:
+            return self.context.wg.wg_lists[location]
+        elif self.context.wg.wg_lists_old[location]:
+            return self.context.wg.wg_lists_old[location]
+        else:
+            return []
+
     def get_list(self, location):
         self.f_logger.log_list(log_list=self.context.wg.wg_lists_old[location],
                                text=f"WgGesucht::Old list({location}):")
