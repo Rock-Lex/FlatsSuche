@@ -6,3 +6,4 @@ lxml
 pymongo
 dnspython
 urllib3
+utils
