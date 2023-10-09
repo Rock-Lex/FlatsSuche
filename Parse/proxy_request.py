@@ -3,7 +3,7 @@ import requests
 import random
 
 
-def proxy_request(url, antiblock, **kwargs):
+def proxy_request(url, antiblock=False, **kwargs):
     ip = ["8.219.97.248:80"]
     ip_addresses = ["159.197.250.171:3128", "193.104.189.68:3128", "157.100.12.138:999", "8.219.97.248:80"]
     AGENTS = [
