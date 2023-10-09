@@ -15,7 +15,7 @@ from logging.handlers import SysLogHandler
 from utils import *
 
 SITE = "all"
-TIME_IN_SECONDS = 240
+TIME_IN_SECONDS = 10
 
 # BOT_TOKEN = "BotTokenVlad"
 BOT_TOKEN = "BotTokenOleks"
